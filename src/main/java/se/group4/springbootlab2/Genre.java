@@ -8,20 +8,20 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int genreId;
+    private int id;
     private String genreName;
 
-    public Genre(int genreId, String genreName) {
-        this.genreId = genreId;
+    public Genre(int id, String genreName) {
+        this.id = id;
         this.genreName = genreName;
     }
 
-    public long getGenreId() {
-        return genreId;
+    public long getId() {
+        return id;
     }
 
-    public void setGenreId(int genreId) {
-        this.genreId = genreId;
+    public void setId(int genreId) {
+        this.id = genreId;
     }
 
     public String getGenreName() {
