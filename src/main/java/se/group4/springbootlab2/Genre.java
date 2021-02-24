@@ -8,10 +8,10 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long genreId;
+    private int genreId;
     private String genreName;
 
-    public Genre(long genreId, String genreName) {
+    public Genre(int genreId, String genreName) {
         this.genreId = genreId;
         this.genreName = genreName;
     }
@@ -20,7 +20,7 @@ public class Genre {
         return genreId;
     }
 
-    public void setGenreId(long genreId) {
+    public void setGenreId(int genreId) {
         this.genreId = genreId;
     }
 

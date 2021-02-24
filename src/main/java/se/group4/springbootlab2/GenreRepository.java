@@ -1,6 +1,11 @@
 package se.group4.springbootlab2;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface GenreRepository extends CrudRepository <> {
+import java.util.List;
+
+@Repository
+public interface GenreRepository extends JpaRepository <Genre, Integer> {
+    List<Genre> findAllByName(String genreName);
 }
