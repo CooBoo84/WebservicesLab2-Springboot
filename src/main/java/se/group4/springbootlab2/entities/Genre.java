@@ -1,10 +1,10 @@
-package se.group4.springbootlab2;
+package se.group4.springbootlab2.entities;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name="genres")
-public class Genre {
+public class Genre {                                                                                                    //Databaskopplingens klasser som vi läser och skriver till databasen
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
