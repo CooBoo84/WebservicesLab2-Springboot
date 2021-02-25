@@ -38,4 +38,10 @@ public class GenreController {                                                  
       return genreService.createGenre(genre);
     }
 
+
+    @DeleteMapping("/genres/{id}")
+    public void delete(@PathVariable int id){
+        genreService.delete(id);
+    }
+
 }

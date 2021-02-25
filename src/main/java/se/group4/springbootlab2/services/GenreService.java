@@ -1,6 +1,8 @@
 package se.group4.springbootlab2.services;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 import se.group4.springbootlab2.dtos.GenreDto;
 import se.group4.springbootlab2.mappers.GenreMapper;
 import se.group4.springbootlab2.respositories.GenreRepository;
@@ -32,5 +34,9 @@ public class GenreService {
             throw new RuntimeException();
         }
         return genreMapper.mapp(genreRepository.save(genreMapper.mapp(genre)));
+    }
+
+    public void delete(int id) {
+        genreRepository.deleteById(id);
     }
 }

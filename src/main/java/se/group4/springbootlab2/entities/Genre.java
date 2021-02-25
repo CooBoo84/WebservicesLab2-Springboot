@@ -20,7 +20,7 @@ public class Genre {                                                            
 
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
