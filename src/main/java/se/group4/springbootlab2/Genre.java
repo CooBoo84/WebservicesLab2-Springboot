@@ -16,6 +16,10 @@ public class Genre {
         this.genreName = genreName;
     }
 
+    public Genre() {
+
+    }
+
     public long getId() {
         return id;
     }
