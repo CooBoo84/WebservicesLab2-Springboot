@@ -7,7 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class GenreControllerTest {
+class GenreControllerTest {                                                                                             //Unit test
 
     @Test
     void callingOneWithValidIdReturnsOneGenre(){

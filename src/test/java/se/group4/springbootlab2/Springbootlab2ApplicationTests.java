@@ -11,8 +11,8 @@ import se.group4.springbootlab2.dtos.GenreDto;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
-
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+                                                                                                                            //Dessa tester ska vi göra
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)                                                 //End2End test. Startar hela Spring
 class Springbootlab2ApplicationTests {
 
     @LocalServerPort

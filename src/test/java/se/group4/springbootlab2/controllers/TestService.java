@@ -9,7 +9,7 @@ import java.util.Optional;
 public class TestService implements Service {
     @Override
     public List<GenreDto> getAllGenres() {
-        return null;
+        return List.of(new GenreDto(1,"Namn1"), new GenreDto(2,"Namn2"));
     }
 
     @Override
