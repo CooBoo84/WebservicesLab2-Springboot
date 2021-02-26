@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GenreService {
+public class GenreService implements se.group4.springbootlab2.services.Service {
 
     private final GenreMapper genreMapper;
     private GenreRepository genreRepository;
@@ -22,14 +22,17 @@ public class GenreService {
         this.genreMapper = genreMapper;
     }
 
+    @Override
     public List<GenreDto> getAllGenres(){
         return genreMapper.mapp(genreRepository.findAll());
     }
 
+    @Override
     public Optional<GenreDto> getOne(int id){
         return genreMapper.mapp(genreRepository.findById(id));
     }
 
+    @Override
     public GenreDto createGenre(GenreDto genre){
         if(genre.getGenreName().isEmpty()){
             throw new RuntimeException();
@@ -37,11 +40,13 @@ public class GenreService {
         return genreMapper.mapp(genreRepository.save(genreMapper.mapp(genre)));
     }
 
+    @Override
     public void delete(int id) {
         genreRepository.deleteById(id);
     }
 
     //PutMapping
+    @Override
     public GenreDto replace(int id, GenreDto genreDto) {
         Optional<Genre> genre = genreRepository.findById(id);
         if(genre.isPresent()){
@@ -53,6 +58,7 @@ public class GenreService {
         }
     }
     //PatchMapping
+    @Override
     public GenreDto update(int id, GenreDto genreDto) {
         Optional<Genre> genre = genreRepository.findById(id);
         if(genre.isPresent()){
