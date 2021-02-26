@@ -44,4 +44,14 @@ public class GenreController {                                                  
         genreService.delete(id);
     }
 
+    @PutMapping("/genres/{id}")                                                                                       //Uppdaterar hela objektet
+    public GenreDto replace(@RequestBody GenreDto genreDto, @PathVariable int id){
+       return genreService.replace(id, genreDto);
+    }
+
+    @PatchMapping("/genres/{id}")                                                                                     //Uppdaterar en variabel (typ bara Email). Om man lägger till fler variabler, skapa fler klasser, se 20210219_111245 29:27
+    public GenreDto update(@RequestBody GenreDto genreDto, @PathVariable int id){
+        return genreService.update(id, genreDto);
+    }
+
 }
