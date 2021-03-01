@@ -31,4 +31,5 @@ class Springbootlab2ApplicationTests {
         assertThat(result.getBody().length).isGreaterThan(0);
 
     }
+
 }
