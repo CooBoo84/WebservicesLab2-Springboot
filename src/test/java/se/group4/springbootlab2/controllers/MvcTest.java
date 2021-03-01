@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import se.group4.springbootlab2.services.Service;
 
 
+
 @WebMvcTest(GenreController.class)
 @Import(TestService.class)
 public class MvcTest {                                                                                                  //Test som bara startar upp det nödvändiga. Mellan Unittester och E2E (Integrationstest)
@@ -30,6 +31,5 @@ public class MvcTest {                                                          
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
-
 
 }

@@ -23,7 +23,7 @@ class Springbootlab2ApplicationTests {
 
 
     @Test
-    void contextLoads() {
+    void returnAllGenres() {
         HttpHeaders headers = new HttpHeaders();
         headers.add("Accept", "application/xml");
         var result = testClient.getForEntity("http://localhost:"+port+"/genres", GenreDto[].class);
@@ -31,5 +31,4 @@ class Springbootlab2ApplicationTests {
         assertThat(result.getBody().length).isGreaterThan(0);
 
     }
-
 }
