@@ -12,4 +12,3 @@ public class Springbootlab2Application {
 
 }
 
-//Ska börja på Web Services-20210222_110620-Mötesinspelning

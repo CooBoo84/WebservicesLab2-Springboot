@@ -1,5 +1,6 @@
 package se.group4.springbootlab2.controllers;
 
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,11 +12,12 @@ import java.util.List;
 @RestController
 public class GenreController {                                                                                          //Tar hand om inkommande anrop
 
-    private Service service;
+    private final Service service;
 
     public GenreController(Service service) {
         this.service = service;
     }
+
 
     @GetMapping("/genres")
     public List<GenreDto> all(){
