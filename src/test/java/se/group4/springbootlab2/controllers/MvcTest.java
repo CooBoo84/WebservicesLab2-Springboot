@@ -47,13 +47,13 @@ public class MvcTest {                                                          
     }
 
 
-    //Not working
+    //TODO:Post test not working
     @Test
     void postOneGenreToRepository() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .post("/genres")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\":1,\"genresName\":\"EfterPOST}"))
+                .content("{\"id\":1,\"genresName\":\"EfterPOST\"}"))
                 .andExpect(MockMvcResultMatchers.status().isCreated());
     }
 
@@ -64,13 +64,13 @@ public class MvcTest {                                                          
                 .andExpect(status().isOk());
     }
 
-    //Not working
+    //TODO:Put test not working
     @Test
     void putOneGenreToRepository() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                 .put("/genres/1")
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"id\":1,\"genresName\":\"EfterPUT}"))
+                .content("{\"id\":1,\"genresName\":\"EfterPUT\"}"))
                 .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
