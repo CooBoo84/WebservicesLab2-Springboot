@@ -47,7 +47,6 @@ public class MvcTest {                                                          
     }
 
 
-    //TODO:Post test not working
     @Test
     void postOneGenreToRepository() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
@@ -64,7 +63,7 @@ public class MvcTest {                                                          
                 .andExpect(status().isOk());
     }
 
-    //TODO:Put test not working
+
     @Test
     void putOneGenreToRepository() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders

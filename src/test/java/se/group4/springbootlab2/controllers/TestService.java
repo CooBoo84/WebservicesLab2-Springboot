@@ -25,9 +25,7 @@ public class TestService implements Service {
     }
 
     @Override
-    public void delete(int id) {
-
-    }
+    public void delete(int id) {     }
 
     @Override
     public GenreDto replace(int id, GenreDto genreDto) {
