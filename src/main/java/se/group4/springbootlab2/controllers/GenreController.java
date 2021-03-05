@@ -1,11 +1,11 @@
 package se.group4.springbootlab2.controllers;
 
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import se.group4.springbootlab2.dtos.GenreDto;
 import se.group4.springbootlab2.services.Service;
+
 
 import java.util.List;
 
@@ -56,4 +56,11 @@ public class GenreController {                                                  
         return service.update(id, genreDto);
     }
 
+    @GetMapping("/genres/search")
+    public List<GenreDto> allByName(@RequestParam String name) {
+        var result = service.getAllByName(name);
+        if(!result.isEmpty())
+            return result;
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Name " + name + " not found.");
+    }
 }

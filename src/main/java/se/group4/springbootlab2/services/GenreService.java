@@ -1,5 +1,6 @@
 package se.group4.springbootlab2.services;
 
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -34,7 +35,7 @@ public class GenreService implements se.group4.springbootlab2.services.Service {
 
     @Override
     public GenreDto createGenre(GenreDto genre){
-        if(genre.getGenreName().isEmpty()){
+        if(genre.getName().isEmpty()){
             throw new RuntimeException();
         }
         return genreMapper.mapp(genreRepository.save(genreMapper.mapp(genre)));
@@ -51,7 +52,7 @@ public class GenreService implements se.group4.springbootlab2.services.Service {
         Optional<Genre> genre = genreRepository.findById(id);
         if(genre.isPresent()){
             Genre updatedGenre = genre.get();
-            updatedGenre.setGenreName(genreDto.getGenreName());
+            updatedGenre.setName(genreDto.getName());
             return genreMapper.mapp(genreRepository.save(updatedGenre));
         }else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " +id +" not found.");
@@ -63,13 +64,18 @@ public class GenreService implements se.group4.springbootlab2.services.Service {
         Optional<Genre> genre = genreRepository.findById(id);
         if(genre.isPresent()){
             Genre updatedGenre = genre.get();
-            if( genreDto.getGenreName() != null){
-                updatedGenre.setGenreName(genreDto.getGenreName());
+            if( genreDto.getName() != null){
+                updatedGenre.setName(genreDto.getName());
             }
             return genreMapper.mapp(genreRepository.save(updatedGenre));
         }
         else{
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Id " +id +" not found.");
         }
+    }
+
+    @Override
+    public List<GenreDto> getAllByName(String name) {
+        return genreMapper.mapp(genreRepository.findAllByNameContains(name));
     }
 }

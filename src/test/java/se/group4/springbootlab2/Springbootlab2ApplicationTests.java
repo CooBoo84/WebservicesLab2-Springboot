@@ -12,24 +12,24 @@ import se.group4.springbootlab2.dtos.GenreDto;
 
 import static org.assertj.core.api.Assertions.assertThat;
                                                                                                                             //Dessa tester ska vi göra
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)                                                 //End2End test. Startar hela Spring
-class Springbootlab2ApplicationTests {
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)                                                 //End2End test. Startar hela Spring
+//class Springbootlab2ApplicationTests {
+//
+//    @LocalServerPort
+//    int port;
+//
+//    @Autowired                                                                                                                    //Client för att kunna ställa Http frågor, som en http client
+//    TestRestTemplate testClient;                                                                                            //RestTemplate används vill ansluta till andra webservices
 
-    @LocalServerPort
-    int port;
 
-    @Autowired                                                                                                                    //Client för att kunna ställa Http frågor, som en http client
-    TestRestTemplate testClient;                                                                                            //RestTemplate används vill ansluta till andra webservices
+//    @Test
+//    void returnAllGenres() {
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.add("Accept", "application/xml");
+//        var result = testClient.getForEntity("http://localhost:"+port+"/genres", GenreDto[].class);
+//        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
+//        assertThat(result.getBody().length).isGreaterThan(0);
+//
+//    }
 
-
-    @Test
-    void returnAllGenres() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Accept", "application/xml");
-        var result = testClient.getForEntity("http://localhost:"+port+"/genres", GenreDto[].class);
-        assertThat(result.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(result.getBody().length).isGreaterThan(0);
-
-    }
-
-}
+//}

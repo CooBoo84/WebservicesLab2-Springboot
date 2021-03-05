@@ -8,10 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.web.server.ResponseStatusException;
 import se.group4.springbootlab2.dtos.GenreDto;
 import se.group4.springbootlab2.services.Service;
 
@@ -72,7 +74,7 @@ public class MvcTest {                                                          
                 .content(asJsonString(newGenre))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
-                .andExpect(MockMvcResultMatchers.jsonPath("genreName").value(newGenre.getGenreName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("name").value(newGenre.getName()));
     }
 
     @Test
@@ -87,7 +89,7 @@ public class MvcTest {                                                          
                 .content(asJsonString(updatedGenrePut))
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("genreName").value(updatedGenrePut.getGenreName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("name").value(updatedGenrePut.getName()));
     }
 
     @Test
@@ -102,7 +104,7 @@ public class MvcTest {                                                          
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("genreName").value(updatedGenrePatch.getGenreName()));
+                .andExpect(MockMvcResultMatchers.jsonPath("name").value(updatedGenrePatch.getName()));
     }
 
     @Test
@@ -111,6 +113,25 @@ public class MvcTest {                                                          
                 .delete("/genres/1"))
                 .andExpect(status().isOk());
     }
+
+
+    @Test
+    void searchForGenreWithCorrectName() throws Exception {
+
+        List<GenreDto> list = List.of(
+                new GenreDto(1, "Dans"),
+                new GenreDto(2, "Rock")
+        );
+
+        when(service.getAllByName("Dans")).thenReturn(list);
+
+        mockMvc.perform(MockMvcRequestBuilders
+                .get("/genres/search?name=Dans")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    }
+
 
     public static String asJsonString(final Object obj) {
         try {

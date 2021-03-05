@@ -10,15 +10,16 @@ import java.util.stream.Collectors;
 
 @Component
 public class GenreMapper {
+
     public GenreMapper() {
     }
 
     public GenreDto mapp(Genre genre) {
-        return new GenreDto((int) genre.getId(), genre.getGenreName());
+        return new GenreDto((int) genre.getId(), genre.getName());
     }
 
     public Genre mapp(GenreDto genreDto) {
-        return new Genre(genreDto.getId(), genreDto.getGenreName());
+        return new Genre(genreDto.getId(), genreDto.getName());
     }
 
     public Optional<GenreDto> mapp(Optional<Genre> optionalGenre) {

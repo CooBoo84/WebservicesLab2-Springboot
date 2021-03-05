@@ -19,4 +19,6 @@ public interface Service {
 
     //PatchMapping
     GenreDto update(int id, GenreDto genreDto);
+
+    List<GenreDto> getAllByName(String name);
 }

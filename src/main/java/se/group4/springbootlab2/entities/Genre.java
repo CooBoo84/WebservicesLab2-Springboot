@@ -9,11 +9,11 @@ public class Genre {                                                            
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String genreName;
+    private String name;
 
-    public Genre(int id, String genreName) {
+    public Genre(int id, String name) {
         this.id = id;
-        this.genreName = genreName;
+        this.name = name;
     }
 
     public Genre() {
@@ -24,15 +24,15 @@ public class Genre {                                                            
         return id;
     }
 
-    public void setId(int genreId) {
-        this.id = genreId;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getGenreName() {
-        return genreName;
+    public String getName() {
+        return name;
     }
 
-    public void setGenreName(String genreName) {
-        this.genreName = genreName;
+    public void setName(String name) {
+        this.name = name;
     }
 }
